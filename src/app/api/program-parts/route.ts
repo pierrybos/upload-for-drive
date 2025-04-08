@@ -7,21 +7,8 @@ export async function GET() {
   try {
     const session = await getServerSession();
 
-    if (!session?.user?.email) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
-
-    const parts = await prisma.programPart.findMany({
-      where: {
-        institution: {
-          users: {
-            some: {
-              email: session.user.email,
-            },
-          },
-        },
-      },
-    });
+    const parts = await prisma.programPart.findMany();
+console.log(parts);
 
     return NextResponse.json(parts);
   } catch (error) {
