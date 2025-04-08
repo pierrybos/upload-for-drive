@@ -88,11 +88,7 @@ const containerStyle = {
 
       // Verifica se a nova mensagem é de outra pessoa
       const lastMessage = newMessages[newMessages.length - 1];
-      if (
-        session?.user &&
-        lastMessage &&
-        lastMessage?.user !== session.user.name
-      ) {
+      if (session?.user && lastMessage?.user !== session.user.name) {
         showNotification(
           `Nova mensagem de ${lastMessage?.user || ""}`,
           lastMessage?.text || ""
