@@ -5,10 +5,8 @@ import { getServerSession } from "next-auth";
 
 export async function GET() {
   try {
-    const session = await getServerSession();
 
     const parts = await prisma.programPart.findMany();
-console.log(parts);
 
     return NextResponse.json(parts);
   } catch (error) {
